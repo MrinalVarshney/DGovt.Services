@@ -39,6 +39,14 @@ async function main() {
   hello.waitForDeployment();
   console.log(await hello.getAddress());
 
+  const storageFactory = await ethers.getContractFactory("Storage");
+
+  console.log(await signUpVerifier.getAddress());
+  console.log("Deploying Hello...");
+  const storage = await storageFactory.deploy();
+  storage.waitForDeployment();
+  console.log(await storage.getAddress());
+
   //   const response = await hello.sayHello();
   //   console.log(response);
 }
