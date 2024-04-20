@@ -6,7 +6,10 @@ async function main() {
   //User token distribution token deploy
   console.log("Deploying user token contract...");
   const userTokenFactory = await ethers.getContractFactory("MyToken");
-  const userTokenContract = await userTokenFactory.deploy("Government Elections",10000);
+  const userTokenContract = await userTokenFactory.deploy(
+    "Government Elections",
+    10000
+  );
   userTokenContract.waitForDeployment();
   const userTokenContractAddress = await userTokenContract.getAddress();
   console.log(await userTokenContractAddress);
@@ -26,7 +29,9 @@ async function main() {
   const signUpVerifierFactory = await ethers.getContractFactory(
     "VerifySignature"
   );
-  const signUpVerifier = await signUpVerifierFactory.deploy(await govBodyContractAddress);
+  const signUpVerifier = await signUpVerifierFactory.deploy(
+    await govBodyContractAddress
+  );
   await signUpVerifier.waitForDeployment();
   const signUpVerifierAddress = await signUpVerifier.getAddress();
   console.log(await signUpVerifier);
@@ -42,10 +47,19 @@ async function main() {
   const storageFactory = await ethers.getContractFactory("Storage");
 
   console.log(await signUpVerifier.getAddress());
-  console.log("Deploying Hello...");
+  console.log("Deploying storage...");
   const storage = await storageFactory.deploy();
   storage.waitForDeployment();
   console.log(await storage.getAddress());
+
+  // deployment of LandNFTs
+  const landNFTsFactory = await ethers.getContractFactory("LandToken");
+
+  console.log(await signUpVerifier.getAddress());
+  console.log("Deploying LandToken...");
+  const landNFT = await landNFTsFactory.deploy();
+  landNFT.waitForDeployment();
+  console.log(await landNFT.getAddress());
 
   //   const response = await hello.sayHello();
   //   console.log(response);
