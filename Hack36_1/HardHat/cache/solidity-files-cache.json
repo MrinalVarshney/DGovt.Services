@@ -185,8 +185,40 @@
         "VerifySignature"
       ]
     },
+    "/home/lokesh/Desktop/DGovt.Services/Hack36_1/HardHat/contracts/votingToken.sol": {
+      "lastModificationDate": 1713595043080,
+      "contentHash": "846bf2ad0dca0dfce397dce9beb48a31",
+      "sourceName": "contracts/votingToken.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
+    },
     "/home/lokesh/Desktop/DGovt.Services/Hack36_1/HardHat/contracts/storage.sol": {
-      "lastModificationDate": 1713595165461,
+      "lastModificationDate": 1713625627911,
       "contentHash": "a3e7c85be928a2cbf1c7182741e7abcc",
       "sourceName": "contracts/storage.sol",
       "solcConfig": {
@@ -220,38 +252,6 @@
       "artifacts": [
         "Storage"
       ]
-    },
-    "/home/lokesh/Desktop/DGovt.Services/Hack36_1/HardHat/contracts/votingToken.sol": {
-      "lastModificationDate": 1713595043080,
-      "contentHash": "846bf2ad0dca0dfce397dce9beb48a31",
-      "sourceName": "contracts/votingToken.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
     }
   }
 }
