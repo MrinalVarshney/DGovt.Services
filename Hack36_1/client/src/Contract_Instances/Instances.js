@@ -12,6 +12,7 @@ export const useWeb3 = () => useContext(Web3Context);
 
 // Web3 Provider component
 export const Web3Provider = ({ children }) => {
+  const [localWalletAddress,setLocalWalletAddress] = useState(null);
   const [web3Local, setWeb3Local] = useState(null);
   const [web3Wallet, setWeb3Wallet] = useState(null);
   const [govContract, setgovContract] = useState(null);
@@ -30,6 +31,8 @@ export const Web3Provider = ({ children }) => {
     const initWeb3Local = async () => {
       const web3Instance = new Web3("http://127.0.0.1:8545"); // Assuming Hardhat is running on port 8545
       setWeb3Local(web3Instance);
+      const accounts = await web3Instance.eth.getAccounts();
+      setLocalWalletAddress(accounts[0]);
       console.log("Web3 for local node initialized.");
     };
 
@@ -118,6 +121,7 @@ export const Web3Provider = ({ children }) => {
     govContract,
     signupContract,
     walletAddress,
+    localwalletAddress : localWalletAddress,
     storageContract,
     storageContractAddress,
     setWalletAddress,
