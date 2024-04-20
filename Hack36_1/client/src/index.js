@@ -4,14 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-
+import {Web3Provider} from "./Contract_Instances/Instances"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <Web3Provider>
   <BrowserRouter>
     <React.StrictMode>
       <App />
     </React.StrictMode>
   </BrowserRouter>
+  </Web3Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
