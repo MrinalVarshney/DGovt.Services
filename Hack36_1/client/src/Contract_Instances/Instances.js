@@ -2,7 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import Web3 from "web3";
 import govBodyABI from "../ABI/govBody.json";
 import signUpABI from "../ABI/signUpVerifier.json";
-import storageABI from"../ABI/storage.json"
+import storageABI from "../ABI/storage.json";
+import LandNFTs from "../ABI/LandToken.json";
 // Create the Web3 context
 const Web3Context = createContext();
 
@@ -15,12 +16,14 @@ export const Web3Provider = ({ children }) => {
   const [web3Wallet, setWeb3Wallet] = useState(null);
   const [govContract, setgovContract] = useState(null);
   const [signupContract, setSignupContract] = useState(null);
-  const [storageContract,setStorageContract] = useState(null);
+  const [storageContract, setStorageContract] = useState(null);
   const [walletAddress, setWalletAddress] = useState(null);
+  const [LandNFTsContract, setLandNFTSContract] = useState(null);
   const govBodyContractAddress = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
-  const signUpVerifierContractAddress ="0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0";
+  const signUpVerifierContractAddress =
+    "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0";
   const storageContractAddress = "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9";
-
+  const LandNFTsContractAddress = "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707";
 
   // Initialize Web3 for local Hardhat node
   useEffect(() => {
@@ -77,12 +80,16 @@ export const Web3Provider = ({ children }) => {
         );
         setStorageContract(contractInstance);
         console.log("Govt and auth contracts loaded");
+        contractInstance = new web3Local.eth.Contract(
+          LandNFTs.abi,
+          LandNFTsContractAddress
+        );
+        setLandNFTSContract(contractInstance);
       }
     };
 
     loadContract();
   }, [web3Local]);
-
 
   useEffect(() => {
     const loadContract = async () => {
@@ -104,7 +111,6 @@ export const Web3Provider = ({ children }) => {
 
     loadContract();
   }, [web3Local]);
-
 
   const values = {
     web3Local,
